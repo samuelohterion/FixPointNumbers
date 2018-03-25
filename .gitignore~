@@ -30,6 +30,3 @@
 *.exe
 *.out
 *.app
-
-# platform depend project file
-*.pro.user
