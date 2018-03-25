@@ -5,7 +5,7 @@
 #include <ostream>
 
 // ausgehend von sizeof( int ) = 4 byte = 32 bit
-template < int FLOOR = 1, int FRACT  = 1 >
+template < int FLOOR, int FRACT >
 class FPN {
 
 	public:
@@ -32,42 +32,51 @@ class FPN {
 
 	public:
 
-		FPN
-		operator + ( FPN const &p_y ) const {
+		FPN< FLOOR, FRACT >
+		operator + ( FPN< FLOOR, FRACT > const &p_y ) const {
+
+			// hier mit leben fuellen
+			// gebe erstmal quatsch zurueck
+
+			FPN< FLOOR, FRACT >
+			ret( 0 );
+
+			for( int i = 0; i < FLOOR + FRACT; ++ i ) {
+
+				ret.x[ i ] = x[ i ] + p_y.x[ i ];
+			}
+
+			return ret;
+		}
+
+		FPN< FLOOR, FRACT >
+		operator - ( FPN< FLOOR, FRACT > const &p_y ) const {
 
 			// hier mit leben fuellen
 			// gebe erstmal 0 zurueck
-			return FPN( 0. );
+			return FPN< FLOOR, FRACT >( 0. );
 		}
 
-		FPN
-		operator - ( FPN const &p_y ) const {
+		FPN< FLOOR, FRACT >
+		operator * ( FPN< FLOOR, FRACT > const &p_y ) const {
 
 			// hier mit leben fuellen
 			// gebe erstmal 0 zurueck
-			return FPN( 0. );
+			return FPN< FLOOR, FRACT >( 0. );
 		}
 
-		FPN
-		operator * ( FPN const &p_y ) const {
-
-			// hier mit leben fuellen
-			// gebe erstmal 0 zurueck
-			return FPN( 0. );
-		}
-
-		FPN
+		FPN< FLOOR, FRACT >
 		operator / ( FPN const &p_y ) const {
 
 			// hier mit leben fuellen
 			// gebe erstmal 0 zurueck
-			return FPN( 0. );
+			return FPN< FLOOR, FRACT >( 0. );
 		}
 };
 
 // die funktion muss natuerlich wieder die richtige zahl anzeigen
 // derzeit spuckt sie nur die integers aus
-template < int FLOOR = 1, int FRACT  = 1 >
+template < int FLOOR , int FRACT >
 std::ostream
 & operator << ( std::ostream &p_o, FPN< FLOOR, FRACT > const & p_fpn ) {
 

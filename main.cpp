@@ -3,6 +3,8 @@
 
 using namespace std;
 
+typedef FPN< 1, 1 > Fix;
+
 int
 main( ) {
 
@@ -14,8 +16,8 @@ main( ) {
 
 	// lege ein paar fix point numbers an und addiere schonmal
 
-	FPN<1,1>
-	a = 1.,
+	Fix
+	a = 11.,
 	b = 2.5,
 	c = a + b;
 
